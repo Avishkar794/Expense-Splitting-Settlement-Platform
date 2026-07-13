@@ -1,11 +1,12 @@
 package com.avishkar.ExpenseMgmt.model;
 
+import com.avishkar.ExpenseMgmt.enums.GroupRole;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
-
+@Data
 @Entity
 @Table(name = "group_members")
 public class GroupMember {
@@ -21,7 +22,8 @@ public class GroupMember {
     private Long userId;
 
     @Column(nullable = false)
-    private String role; // e.g., "admin", "member"
+    @Enumerated(EnumType.STRING)
+    private GroupRole role; // e.g., "admin", "member"
 
     @Column(nullable = false)
     private LocalDateTime joinedAt;
