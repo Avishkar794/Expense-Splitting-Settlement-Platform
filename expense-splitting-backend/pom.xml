@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.avishkar</groupId>
-	<artifactId>ExpenseMgmt</artifactId>
+	<artifactId>expense-splitting-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
