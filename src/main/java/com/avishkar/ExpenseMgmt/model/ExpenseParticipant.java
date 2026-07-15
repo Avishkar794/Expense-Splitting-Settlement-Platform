@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-
+@Data
 @Entity
 @Table(name = "expense_participants")
 public class ExpenseParticipant {
@@ -20,7 +20,7 @@ public class ExpenseParticipant {
     @Column(nullable = false)
     private Long userId;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(precision = 10, scale = 2)
     private BigDecimal shareAmount;
 
     @Column(precision = 5, scale = 2)

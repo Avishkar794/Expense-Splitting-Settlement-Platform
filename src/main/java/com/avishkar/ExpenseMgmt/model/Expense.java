@@ -7,7 +7,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-
+@Data
 @Entity
 @Table(name = "expenses")
 public class Expense {
@@ -37,5 +37,7 @@ public class Expense {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 
 }

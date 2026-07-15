@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-
+@Data
 @Entity
 @Table(name = "settlements")
 public class Settlement {

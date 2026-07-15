@@ -155,7 +155,7 @@ public class GroupService {
         groupDetailsResponse.setCreatedBy(group.getCreatedBy());
         groupDetailsResponse.setRole(currentUserMembership.getRole());
 
-        List<GroupMember> groupMembers = (List<GroupMember>) groupMemberRepository.findByGroupId(groupId);
+        List<GroupMember> groupMembers = groupMemberRepository.findByGroupId(groupId);
 
         List<MemberResponse> memberResponses = new ArrayList<>();
 
