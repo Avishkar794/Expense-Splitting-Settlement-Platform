@@ -1,0 +1,5 @@
+/* Custom styling extensions can be added here. Core layouts reside in index.css */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

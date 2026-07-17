@@ -4,7 +4,6 @@ import com.avishkar.ExpenseMgmt.dto.*;
 import com.avishkar.ExpenseMgmt.factory.SplitStrategyFactory;
 import com.avishkar.ExpenseMgmt.model.Expense;
 import com.avishkar.ExpenseMgmt.model.ExpenseParticipant;
-import com.avishkar.ExpenseMgmt.model.Group;
 import com.avishkar.ExpenseMgmt.model.User;
 import com.avishkar.ExpenseMgmt.repository.*;
 import com.avishkar.ExpenseMgmt.strategy.SplitStrategy;

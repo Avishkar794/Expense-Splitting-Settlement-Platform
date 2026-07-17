@@ -26,4 +26,9 @@ public class UserController {
         return ResponseEntity.ok(responseList);
     }
 
+    @GetMapping("/users/me")
+    public ResponseEntity<UserSearchResponse> getCurrentUser() {
+        return ResponseEntity.ok(userService.getCurrentUserResponse());
+    }
+
 }

@@ -4,7 +4,6 @@ import com.avishkar.ExpenseMgmt.dto.UserSearchResponse;
 import com.avishkar.ExpenseMgmt.model.User;
 import com.avishkar.ExpenseMgmt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,4 +46,14 @@ public class UserService {
 
         return responses;
     }
+
+    public UserSearchResponse getCurrentUserResponse() {
+        User user = currentUserService.getCurrentUser();
+        UserSearchResponse response = new UserSearchResponse();
+        response.setUserId(user.getId());
+        response.setUsername(user.getUsername());
+        response.setEmail(user.getEmail());
+        return response;
+    }
 }
+

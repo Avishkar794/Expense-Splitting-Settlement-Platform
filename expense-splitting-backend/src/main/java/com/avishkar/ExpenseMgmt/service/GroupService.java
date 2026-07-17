@@ -44,7 +44,6 @@ public class GroupService {
         group.setCreatedBy(user.getId());
 
         // Save the group to the database
-
         Group savedGroup = groupRepository.save(group);
 
         GroupMember groupMember = new GroupMember();
@@ -68,7 +67,6 @@ public class GroupService {
         User currentUser = currentUserService.getCurrentUser();
 
         // Check if the current user is an admin of the group
-
         GroupMember currentUserMembership = groupMemberRepository.findByGroupIdAndUserId(groupId, currentUser.getId())
                 .orElseThrow(() -> new RuntimeException("Current user is not a member of the group"));
 
