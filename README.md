@@ -5,7 +5,6 @@
 [![React](https://img.shields.io/badge/React-19.2.0-blue.svg)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.3.1-purple.svg)](https://vite.dev/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A full-stack expense sharing application inspired by Splitwise that allows users to create groups, split expenses, track balances, simplify debts, and settle payments.
 
