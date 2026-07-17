@@ -27,8 +27,11 @@ public class PercentageSplitStrategy implements SplitStrategy{
         }
 
         BigDecimal totalAmount = expense.getAmount();
+        BigDecimal allocated = BigDecimal.ZERO;
+        int n = participants.size();
 
-        for(ParticipantSplitRequest participantSplitRequest : participants) {
+        for (int i = 0; i < n; i++) {
+            ParticipantSplitRequest participantSplitRequest = participants.get(i);
 
             if (participantSplitRequest.getSharedPercentage().compareTo(BigDecimal.ZERO) <= 0) {
                 throw new RuntimeException("Percentage must be greater than zero");
@@ -38,14 +41,19 @@ public class PercentageSplitStrategy implements SplitStrategy{
 
             ExpenseParticipant expenseParticipant = new ExpenseParticipant();
 
-            BigDecimal sharedAmt = totalAmount
-                    .multiply(perc)
-                    .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
-
             expenseParticipant.setExpenseId(expense.getExpenseId());
             expenseParticipant.setUserId(participantSplitRequest.getParticipantId());
-            expenseParticipant.setShareAmount(sharedAmt);
             expenseParticipant.setPercentage(perc);
+
+            if (i == n - 1) {
+                expenseParticipant.setShareAmount(totalAmount.subtract(allocated));
+            } else {
+                BigDecimal sharedAmt = totalAmount
+                        .multiply(perc)
+                        .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+                expenseParticipant.setShareAmount(sharedAmt);
+                allocated = allocated.add(sharedAmt);
+            }
 
             expenseParticipants.add(expenseParticipant);
         }

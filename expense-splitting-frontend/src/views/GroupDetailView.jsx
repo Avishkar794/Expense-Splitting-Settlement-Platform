@@ -9,16 +9,16 @@ import { ArrowLeft, UserPlus, Plus, DollarSign, List, TrendingUp, Users, Shield,
 
 const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
   const { user } = useAuth();
-  
+
   const [group, setGroup] = useState(null);
   const [expenses, setExpenses] = useState([]);
   const [balances, setBalances] = useState([]);
   const [debts, setDebts] = useState([]);
-  
+
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState('expenses'); // 'expenses' | 'balances'
-  
+
   const [isAddExpenseOpen, setIsAddExpenseOpen] = useState(false);
   const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
   const [settling, setSettling] = useState(false);
@@ -132,7 +132,7 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
 
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           {isAdmin && (
-            <button 
+            <button
               className="btn btn-secondary"
               onClick={() => setIsAddMemberOpen(true)}
             >
@@ -140,8 +140,8 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
               Add Member
             </button>
           )}
-          
-          <button 
+
+          <button
             className="btn btn-primary"
             onClick={() => setIsAddExpenseOpen(true)}
           >
@@ -154,9 +154,9 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
       {/* Main Workspace Layout */}
       <div className="dashboard-layout" style={{ gridTemplateColumns: '320px 1fr' }}>
         {/* Sidebar Info Column */}
-        <aside className="sidebar" style={{ 
-          height: 'calc(100vh - 73px)', 
-          top: '73px', 
+        <aside className="sidebar" style={{
+          height: 'calc(100vh - 73px)',
+          top: '73px',
           borderRight: '1px solid hsla(var(--border-color))',
           padding: '1.5rem',
           display: 'flex',
@@ -181,8 +181,8 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {group.members && group.members.map(member => (
-                <div 
-                  key={member.userId} 
+                <div
+                  key={member.userId}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -217,7 +217,7 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
 
           {/* Quick Stats */}
           {debts.length > 0 && (
-            <div 
+            <div
               style={{
                 background: 'linear-gradient(135deg, hsla(var(--warning), 0.08), hsla(var(--secondary), 0.08))',
                 border: '1px solid hsla(var(--warning), 0.25)',
@@ -235,13 +235,13 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
               <span style={{ fontSize: '1.25rem', fontWeight: '800' }}>
                 {debts.length} Transactions
               </span>
-              <button 
-                className="btn btn-primary" 
+              <button
+                className="btn btn-primary"
                 onClick={handleSettleUp}
                 disabled={settling}
-                style={{ 
-                  width: '100%', 
-                  padding: '0.5rem', 
+                style={{
+                  width: '100%',
+                  padding: '0.5rem',
                   fontSize: '0.8rem',
                   background: 'linear-gradient(135deg, hsl(var(--warning)), hsl(var(--secondary)))',
                   boxShadow: 'none'
@@ -256,7 +256,7 @@ const GroupDetailView = ({ groupId, onBack, onShowToast }) => {
         {/* Content Workspace Area */}
         <main style={{ padding: '2rem', overflowY: 'auto', height: 'calc(100vh - 73px)' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            
+
             {/* View Tabs Selector */}
             <div style={{
               display: 'flex',

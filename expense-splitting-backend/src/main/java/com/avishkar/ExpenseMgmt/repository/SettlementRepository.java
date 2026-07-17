@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SettlementRepository extends JpaRepository<Settlement, Long> {
     List<Settlement> findByGroupId(Long groupId);
+    boolean existsByGroupId(Long groupId);
 }

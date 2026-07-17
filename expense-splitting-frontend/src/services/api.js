@@ -116,7 +116,7 @@ export const userService = {
   search: async (query) => {
     return api.get(`/api/search?query=${encodeURIComponent(query)}`);
   },
-  
+
   getMe: async () => {
     return api.get('/api/users/me');
   }

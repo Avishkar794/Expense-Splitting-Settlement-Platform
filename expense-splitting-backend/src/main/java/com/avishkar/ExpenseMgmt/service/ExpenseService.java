@@ -42,6 +42,9 @@ public class ExpenseService {
     @Autowired
     private CurrentUserService currentUserService;
 
+    @Autowired
+    private SettlementRepository settlementRepository;
+
     @Transactional
     public Long addExpense(CreateExpenseRequest createExpenseRequest, Long groupId) {
 
@@ -219,6 +222,12 @@ public class ExpenseService {
                 .orElseThrow(() -> new RuntimeException("Expense does not exist"));
 
         Long groupId = expense.getGroupId();
+
+        if (settlementRepository.existsByGroupId(groupId)) {
+            throw new RuntimeException(
+                "Expenses cannot be deleted after settlement. Create a new group or clear settlements first."
+            );
+        }
 
         User currentUser = currentUserService.getCurrentUser();
 

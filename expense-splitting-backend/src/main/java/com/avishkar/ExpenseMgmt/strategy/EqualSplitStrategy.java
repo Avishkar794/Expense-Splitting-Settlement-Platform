@@ -17,16 +17,29 @@ public class EqualSplitStrategy implements SplitStrategy {
     public List<ExpenseParticipant> calculateShares(Expense expense, List<ParticipantSplitRequest> participants) {
 
         List<ExpenseParticipant> expenseParticipants = new ArrayList<>();
+        int n = participants.size();
+        if (n == 0) {
+            return expenseParticipants;
+        }
 
         BigDecimal sharedAmount = expense.getAmount()
-                .divide(BigDecimal.valueOf(participants.size()), 2, RoundingMode.HALF_UP);
+                .divide(BigDecimal.valueOf(n), 2, RoundingMode.HALF_UP);
 
-        for(ParticipantSplitRequest participantSplitRequest : participants) {
+        BigDecimal allocated = BigDecimal.ZERO;
+
+        for (int i = 0; i < n; i++) {
+            ParticipantSplitRequest participantSplitRequest = participants.get(i);
             ExpenseParticipant expenseParticipant = new ExpenseParticipant();
 
             expenseParticipant.setExpenseId(expense.getExpenseId());
             expenseParticipant.setUserId(participantSplitRequest.getParticipantId());
-            expenseParticipant.setShareAmount(sharedAmount);
+
+            if (i == n - 1) {
+                expenseParticipant.setShareAmount(expense.getAmount().subtract(allocated));
+            } else {
+                expenseParticipant.setShareAmount(sharedAmount);
+                allocated = allocated.add(sharedAmount);
+            }
 
             expenseParticipants.add(expenseParticipant);
         }
